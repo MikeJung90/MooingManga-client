@@ -15,7 +15,6 @@ export default class MangaList extends Component {
   }
 
   renderManga() {
-    console.log(this.context)
     const { mangaList = [] } = this.context
     
     return mangaList.map(manga =>
@@ -24,8 +23,6 @@ export default class MangaList extends Component {
         manga={manga}
       />
     )
-    // console.log('rending manga here')
-    // console.log(MangaListItem)
   }
 
   render() {
