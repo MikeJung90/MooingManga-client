@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Hyph, Section } from '../Utils/Utils';
 import MangaApi from '../../services/Manga-Api-Service';
 import MangaContext from '../../Contexts/MangaContext';
+import './Manga.css';
 
 export default class Manga extends Component {
   static defaultProps = {

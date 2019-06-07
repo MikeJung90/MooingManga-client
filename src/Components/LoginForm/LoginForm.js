@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import AuthApi from '../../services/Auth-Api';
 import TokenService from '../../services/Token-Service';
+import './LoginForm.css';
 
 export default class LoginForm extends Component {
   static defaultProps = {
@@ -44,6 +45,8 @@ export default class LoginForm extends Component {
             required
           />
 
+          <br></br>
+
           <label className='password-form'>Password</label>
           <input
             type='password'
@@ -51,8 +54,9 @@ export default class LoginForm extends Component {
             required
           />
 
+          <br></br>
+
           <button type='submit'>Login</button>
-          <Link to='/Register'>Register</Link>
         </form>
       </div>
     )

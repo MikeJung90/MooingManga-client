@@ -3,6 +3,7 @@ import { Section } from '../Utils/Utils';
 import MangaListContext from '../../Contexts/MangaListContext';
 import MangaListItem from '../MangaListItem/MangaListItem'
 import MangaApi from '../../services/Manga-Api-Service';
+import './MangaList.css';
 
 export default class MangaList extends Component {
   static contextType = MangaListContext

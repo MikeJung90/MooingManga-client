@@ -1,0 +1,21 @@
+.MangaItem-container {
+  flex: 1 16%;
+  padding: 10px;
+  border-color: 10px solid black;
+}
+
+.MangaItem-image {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  margin: auto;
+  top: 0;  
+  bottom: 0;  
+  left: 0;  
+  right: 0; 
+}
+
+.MangaItem-details {
+
+}

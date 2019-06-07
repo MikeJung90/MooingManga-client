@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import TokenService from '../../services/Token-Service';
-// import './Nav.css';
+import './Nav.css';
 
 export default class Nav extends Component {
   handleLogoutClick = () => {
@@ -23,9 +23,6 @@ export default class Nav extends Component {
   renderLoginLink() {
     return (
       <nav className='Nav-not-logged-in'>
-        {/* <div className='left-nav'>
-          <Link to="/">MooingManga</Link>
-        </div> */}
         <div className='right-nav'>
           <Link to="/Favorite">
             Favorite
@@ -43,16 +40,14 @@ export default class Nav extends Component {
 
   render() {
     return <>
-      <div>
+      <div className='Nav-bar'>
         <h1>
           <Link to='/'>MooingManga</Link>
         </h1>
-        <span className='Header__tagline--wide'>Favorite your manga!</span>
         {TokenService.hasAuthToken()
           ? this.renderLogoutLink()
           : this.renderLoginLink()}
       </div>
-      <span className='Header__tagline--narrow'>Rate all the things.</span>
     </>
   }
 }

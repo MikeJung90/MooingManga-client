@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import RegisterForm from '../RegisterForm/RegisterForm';
+import './RegisterPage.css';
 
 export default class Register extends Component {
   static defaultProps = {
