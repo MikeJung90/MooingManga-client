@@ -3,7 +3,11 @@
 }
 
 .mooingmanga-main {
-  max-width: 1500px;
+  max-width: 1000px;
   margin: auto;
   overflow-y: auto;
+}
+
+.red {
+  color: rgb(209, 15, 15);
 }

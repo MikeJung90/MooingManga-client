@@ -1,0 +1,9 @@
+.register-form {
+  flex: 0 1 100%;
+  margin: 5px;
+  padding: 20px;
+}
+
+.red-msg {
+  color: rgb(209, 15, 15);
+}

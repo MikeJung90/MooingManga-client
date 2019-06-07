@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { Section } from '../Utils/Utils';
 import RegisterForm from '../RegisterForm/RegisterForm';
 import './RegisterPage.css';
 
-export default class Register extends Component {
+export default class RegisterPage extends Component {
   static defaultProps = {
     history: {
       push: () => { },
@@ -16,13 +17,15 @@ export default class Register extends Component {
   }
   render() {
     return (
-      <div className='register-page'>
-        <RegisterForm onRegisterSuccess = {this.handleRegisterSuccess} />
-        <br></br>
+      <Section className='register-page'>
+        <h2>Register</h2>
+        <RegisterForm
+          onRegisterSuccess={this.handleRegisterSuccess}
+        />
         <div>
           <Link to="/login" className="login-link">Login</Link>
         </div>
-      </div>
+      </Section>
     )
   }
 }

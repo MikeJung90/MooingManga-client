@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Hyph, Section } from '../Utils/Utils';
+import { Redirect } from 'react-router-dom';
 import MangaApi from '../../services/Manga-Api-Service';
 import MangaContext from '../../Contexts/MangaContext';
 import './Manga.css';
@@ -31,39 +32,45 @@ export default class Manga extends Component {
     return <>
       <div className='manga-image' />
       <h2>{manga.title}</h2>
-      {/* <MangaContent manga={manga} />
-      <MangaReviews reviews={reviews} />
+      <MangaContent manga={manga} />
+      {/* <MangaReviews reviews={reviews} />
       <ReviewForm /> */}
     </>
   }
 
   render() {
     const { error, manga } = this.context
+    const {location} = this.props;
+
+    if (error && error.error.startsWith('Session expired')){
+      return <Redirect push to={{
+        pathname: '/login',
+        state: { from: location.pathname, error: error.error }}}/>
+    }
+
     let content;
     if (error) {
-      content = (error.error === `Manga doesn't exist`)
-        ? <p className='red'>Manga not found</p>
-        : <p className='red'>There was an error</p>
+      content = <p className='red'>{error.error}</p>
     } else if (!manga.id) {
       content = <div className='loading' />
     } else {
       content = this.renderManga()
     }
     return (
-      <Section className='manga'>
+      <Section className='MangaPage'>
         {content}
       </Section>
     )
   }
 }
 
-// function MangaContent({ manga }) {
-//   return (
-//     <p className='MangaPage__content'>
-//       {manga.content}
-//     </p>
-//   )
-// }
+function MangaContent({ manga }) {
+  return (
+    <p className='MangaPage-content'>
+      {manga.content}
+    </p>
+  )
+}
 
 // function MangaReviews({ reviews = [] }) {
 //   return (

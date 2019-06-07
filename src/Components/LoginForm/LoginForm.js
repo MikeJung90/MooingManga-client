@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Button, Input } from '../Utils/Utils';
+import MangaContext from '../../Contexts/MangaContext'
 import AuthApi from '../../services/Auth-Api';
 import TokenService from '../../services/Token-Service';
 import './LoginForm.css';
@@ -8,7 +9,8 @@ export default class LoginForm extends Component {
   static defaultProps = {
     onLoginSuccess: () => {}
   }
-  state = { error: null }
+  static contextType = MangaContext;
+  state = { error: this.context.error ? this.context.error.error : null }
 
   handleSubmitJwtAuth = e => {
     e.preventDefault()
@@ -38,25 +40,25 @@ export default class LoginForm extends Component {
           <div role='alert'>
             {error && <p className='red-msg'>{error}</p>}
           </div>
-          <label className='user-name-form'>User Name</label>
-          <input
-            type='text'
-            name='user_name'
-            required
-          />
+          <div className='user-name'>
+            <label className='user-name-form'>User Name</label>
+            <Input
+              type='text'
+              name='user_name'
+              required
+            />
+          </div>
 
-          <br></br>
+          <div className='password'>
+            <label className='password-form'>Password</label>
+            <Input
+              type='password'
+              name='password'
+              required
+            />
+          </div>
 
-          <label className='password-form'>Password</label>
-          <input
-            type='password'
-            name='password'
-            required
-          />
-
-          <br></br>
-
-          <button type='submit'>Login</button>
+          <Button type='submit'>Login</Button>
         </form>
       </div>
     )

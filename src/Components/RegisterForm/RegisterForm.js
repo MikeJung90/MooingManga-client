@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { Button, Input, Required } from '../Utils/Utils';
 import AuthApi from '../../services/Auth-Api';
+import './RegisterForm.css'
 
 export default class RegisterForm extends Component {
   static defaultProps = {
@@ -31,6 +33,7 @@ export default class RegisterForm extends Component {
         user_name.value = ''
         email.value = ''
         password.value = ''
+        this.props.onRegistrationSuccess()
       })
       .catch(res => {
         this.setState({ error: res.error })
@@ -41,50 +44,74 @@ export default class RegisterForm extends Component {
     const { error } = this.state
     return (
       <div className='register-form-container'>
-        <form className='register-form' onSubmit={this.handleNewUserSubmit}>
+        <form 
+          className='register-form' 
+          onSubmit={this.handleNewUserSubmit}
+        >
           <div role='alert'>
             {error && <p className='red-msg'>{error}</p>}
           </div>
-          <label className='first-name-form'>First Name</label>
-          <input
-            type='text'
-            placeholder='first name'
-            name='first_name'
-            required
-          />
+          <div className='first-name'>
+            <label className='first-name-form'>
+              First Name <Required />
+            </label>
+            <Input
+              type='text'
+              placeholder='first name'
+              name='first_name'
+              required
+            />
+          </div>
 
-          <label className='last-name-form'>Last Name</label>
-          <input
-            type='text'
-            placeholder='last name'
-            name='last_name'
-            required
-          />
+          <div className='last-name'>
+            <label className='last-name-form'>
+              Last Name <Required />
+            </label>
+            <Input
+              type='text'
+              placeholder='last name'
+              name='last_name'
+              required
+            />
+          </div>
 
-          <label className='user-name-form'>User Name</label>
-          <input
-            type='text'
-            placeholder='user name'
-            name='user_name'
-            required
-          />
+          <div className='user-name'>
+            <label className='user-name-form'>
+              User Name <Required />
+            </label>
+            <Input
+              type='text'
+              placeholder='user name'
+              name='user_name'
+              required
+            />
+          </div>
 
-          <label className='email-form'>Email</label>
-          <input
-            type='email'
-            placeholder='email@gmail.com'
-            name='email'
-            required
-          />
+          <div className='email'>
+            <label className='email-form'>
+              Email <Required />
+            </label>
+            <Input
+              type='email'
+              placeholder='email@gmail.com'
+              name='email'
+              required
+            />
+          </div>
 
-          <label className='password-form'>Password</label>
-          <input
-            type='password'
-            placeholder='********'
-            name='password'
-            required
-          />
-          <button type='submit'>Register</button>
+          <div className='password'>
+            <label className='password-form'>
+              Password 
+            <Required /></label>
+            <Input
+              type='password'
+              placeholder='********'
+              name='password'
+              required
+            />
+          </div>
+
+          <Button type='submit'>Register</Button>
         </form>
       </div>
     )
